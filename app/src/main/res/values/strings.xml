@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Movie Motion</string>
+
+    <string name="no_movie">No movie found. Please make sure Title Topic in the setting menu is correct</string>
+
+    <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
+    <string name="no_internet_connection">No internet connection.</string>
+
+
+
+</resources>
