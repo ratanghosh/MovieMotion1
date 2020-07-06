@@ -8,6 +8,7 @@ public class Movie {
     private String userRating;
     private String releaseDate;
     private String posterPath;
+    private String movieID;
 
 
     /**
@@ -17,29 +18,38 @@ public class Movie {
     }
 
     // public constructor for the movie
-    public Movie(String originalTitle, String overview, String userRating, String releaseDate, String posterPath) {
+    public Movie(String originalTitle, String overview, String userRating, String releaseDate, String posterPath, String movieID) {
         this.originalTitle = originalTitle;
         this.overview = overview;
         this.userRating = userRating;
         this.releaseDate = releaseDate;
         this.posterPath = posterPath;
+        this.movieID = movieID;
 
     }
 
     public String getOriginalTitle() {
         return originalTitle;
     }
+
     public String getOverview() {
         return overview;
     }
+
     public String getUserRating() {
         return userRating;
     }
+
     public String getReleaseDate() {
         return releaseDate;
     }
+
     public String getPosterPath() {
         return posterPath;
+    }
+
+    public String getMovieID() {
+        return movieID;
     }
 
 

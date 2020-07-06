@@ -25,17 +25,14 @@ public final class MovieUtils {
      */
     public static final String LOG_TAG = MovieUtils.class.getName();
 
-    public static String releaseDateList1;
-    public static String releaseDateList2;
 
     //Initializing string array list;
     public static List<String> titleList = new ArrayList<String>();
-     public static List<String> overviewList = new ArrayList<String>();
+    public static List<String> overviewList = new ArrayList<String>();
     public static List<String> ratingsList = new ArrayList<String>();
     public static List<String> releaseDateList = new ArrayList<String>();
     public static List<String> posterLinkList = new ArrayList<String>();
-
-
+    public static List<String> movieIDList = new ArrayList<String>();
 
 
     private MovieUtils() {
@@ -118,8 +115,7 @@ public final class MovieUtils {
     /**
      * parsing a JSON response.
      */
-   // public static List<Movie> movies;
-
+    // public static List<Movie> movies;
     public static List<Movie> extractFeatureFromJson(String movieJSON) {
 
         // If the JSON string is empty or null, then return early.
@@ -128,7 +124,7 @@ public final class MovieUtils {
         }
 
         // Create an empty ArrayList that we can start adding movies to
-          List<Movie> movies = new ArrayList<>();
+        List<Movie> movies = new ArrayList<>();
 
         // Try to parse the SAMPLE_JSON_RESPONSE. If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -152,10 +148,9 @@ public final class MovieUtils {
                 String releaseDate = currentMovie.getString("release_date");
                 String userRating = currentMovie.getString("vote_average");
                 String posterPath = currentMovie.getString("poster_path");
+                String movieID = currentMovie.getString("id");
 
-
-
-                Movie movie = new Movie(title, overview, releaseDate, userRating, posterPath);
+                Movie movie = new Movie(title, overview, releaseDate, userRating, posterPath, movieID);
                 movies.add(movie);
 
                 titleList.add(title);
@@ -163,32 +158,26 @@ public final class MovieUtils {
                 releaseDateList.add(releaseDate);
                 ratingsList.add(userRating);
                 posterLinkList.add(posterPath);
-
-
-
-
-
-
+                movieIDList.add(movieID);
 
 
             }
-
 
 
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the movie JSON results", e);
         }
 
         // Return the list of earthquakes
         return movies;
-    /**
-     * Query the date and return a list of {@link News} objects.
-     */
+        /**
+         * Query the date and return a list of {@link News} objects.
+         */
 
-}
+    }
 
     public static List<Movie> fetchMovieData(String requestUrl) {
         // Create URL object
@@ -210,5 +199,5 @@ public final class MovieUtils {
 
 
     }
-    }
+}
 

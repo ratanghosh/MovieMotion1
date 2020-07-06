@@ -34,13 +34,22 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
     }
 
 
-    @Override
-    public View getView( int position, View convertView, ViewGroup parent) {
 
-        View v = convertView;
-        LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        v = inflater.inflate(R.layout.movie_list_item, null);
-        ImageView imageView = (ImageView) v.findViewById(R.id.poster_thumbnail);
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        //View v = convertView;
+        //LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //v = inflater.inflate(R.layout.movie_list_item, null);
+
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.movie_list_item, parent, false);
+        }
+
+
+        ImageView imageView = (ImageView) view.findViewById(R.id.poster_thumbnail);
 
 
         String posterPath = ("http://image.tmdb.org/t/p/w185//" + posterLinkList.get(position));
@@ -50,14 +59,8 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
                 .into(imageView);
 
 
-        return v;
+        return view;
     }
-
-
-
-
-
-
 
 
 }

@@ -5,41 +5,33 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <RelativeLayout
+    <TextView
+        android:id="@+id/sort_by_display_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button_relative_layout">
+        android:textSize="22sp"
+        android:text="DISPLAY"
+        android:gravity="center"
+        android:paddingLeft="40dp"/>
 
-        <Button
-            android:id="@+id/button_previous"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:text=" Previous Page"/>/>
 
-        <Button
-            android:id="@+id/button_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Next Page "/>
-    </RelativeLayout>
 
 
 
     <GridView
 
         android:id="@+id/gridview"
-        android:layout_below="@+id/button_relative_layout"
+        android:layout_below="@+id/sort_by_display_textView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:columnWidth="180dp"
+        android:columnWidth="100dp"
         android:gravity="center"
         android:horizontalSpacing="8dp"
-        android:padding="16dp"
-        android:numColumns="3"
+        android:paddingTop="4dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
         android:verticalSpacing="8dp">
 

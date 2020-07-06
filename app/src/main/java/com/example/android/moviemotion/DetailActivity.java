@@ -1,40 +1,24 @@
 package com.example.android.moviemotion;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.media.Rating;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Adapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.android.moviemotion.MovieUtils.overviewList;
 import static com.example.android.moviemotion.MovieUtils.posterLinkList;
 import static com.example.android.moviemotion.MovieUtils.ratingsList;
 import static com.example.android.moviemotion.MovieUtils.releaseDateList;
-import static com.example.android.moviemotion.MovieUtils.releaseDateList1;
-import static com.example.android.moviemotion.MovieUtils.releaseDateList2;
 import static com.example.android.moviemotion.MovieUtils.titleList;
+
 
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
-
-
-
-
-
-
 
 
     @Override
@@ -59,7 +43,6 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-
         if (position == DEFAULT_POSITION) {
             // EXTRA_POSITION not found in intent
             // closeOnError();
@@ -67,31 +50,23 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-            titleTv.setText(titleList.get(position));
-            overviewTv.setText(overviewList.get(position));
-            ratingsTv.setText(ratingsList.get(position));
-            releaseDateTv.setText(releaseDateList.get(position));
+        titleTv.setText(titleList.get(position));
+        overviewTv.setText(overviewList.get(position));
+        ratingsTv.setText(ratingsList.get(position));
+        releaseDateTv.setText(releaseDateList.get(position));
 
-            String posterPath = ("http://image.tmdb.org/t/p/w185//" +posterLinkList.get(position));
 
+        String posterPath = ("http://image.tmdb.org/t/p/w185//" + posterLinkList.get(position));
 
 
         populateUI();
 
         Picasso.with(this)
-                .load(posterPath )
+                .load(posterPath)
                 .into(posterIv);
 
 
-
-
-
-
-
-
-
     }
-
 
 
     private void populateUI() {
@@ -99,4 +74,4 @@ public class DetailActivity extends AppCompatActivity {
     }
 
 
-    }
+}

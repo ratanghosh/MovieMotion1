@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/popular_movie"
-        android:title="Popular Movie" />
 
     <item
-        android:id="@+id/top_rated_movie"
-        android:title="Top Rated Movie" />
+        android:id="@+id/sort_by"
+        android:title="@string/sort_by"
+        app:showAsAction="always">
 
-    </group>
+        <menu>
+            <item
+                android:id="@+id/most_popular"
+                android:title="@string/popular" />
 
+            <item
+                android:id="@+id/top_rated"
+                android:title="@string/top_rated"/>
 
-
+        </menu>
+    </item>
 </menu>

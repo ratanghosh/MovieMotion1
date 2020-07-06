@@ -6,6 +6,36 @@
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
     <string name="no_internet_connection">No internet connection.</string>
 
+    <string name="settings_number_of_news_label">Maximum Number of News </string>
+    <string name="settings_number_of_news_key" translatable="false">number_of_news</string>
+    <string name="settings_number_of_news_default" translatable="false">10</string>
+
+
+    <string name="settings_news_title_label">Title Topic</string>
+    <string name="settings_news_title_key" translatable="false">news_section</string>
+    <string name="settings_news_title_default" translatable="false">"US"</string>
+
+
+    <!-- Label for the temperature units preference [CHAR LIMIT=30] -->
+    <string name="pref_units_label">Temperature Units</string>
+
+    <!-- Label for metric option in temperature unit preference [CHAR LIMIT=25] -->
+    <string name="pref_units_label_metric">Metric</string>
+
+    <!-- Label for imperial option in temperature unit preference [CHAR LIMIT=25] -->
+    <string name="pref_units_label_imperial">Imperial</string>
+
+    <!-- Key name for temperature unit preference in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_units_key" translatable="false">units</string>
+
+    <!-- Value in SharedPreferences for metric temperature unit option [CHAR LIMIT=NONE] -->
+    <string name="pref_units_metric" translatable="false">metric</string>
+
+    <!-- Value in SharedPreferences for imperial temperature unit option [CHAR LIMIT=NONE] -->
+    <string name="pref_units_imperial" translatable="false">imperial</string>
+    <string name="sort_by">Sort By</string>
+    <string name="popular">Popular</string>
+    <string name="top_rated">Top Rated</string>
 
 
 </resources>

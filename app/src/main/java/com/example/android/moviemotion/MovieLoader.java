@@ -13,12 +13,15 @@ public class MovieLoader extends AsyncTaskLoader<List<Movie>> {
     public MovieLoader(Context context, String url) {
         super(context);
         mUrl = url;
+        forceLoad();
     }
 
     @Override
     protected void onStartLoading() {
         forceLoad();
     }
+
+
 
     @Override
     public List<Movie> loadInBackground() {
