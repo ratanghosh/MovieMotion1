@@ -1,24 +1,29 @@
 package com.example.android.moviemotion;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.squareup.picasso.Picasso;
-
-
-import static com.example.android.moviemotion.MovieUtils.overviewList;
-import static com.example.android.moviemotion.MovieUtils.posterLinkList;
-import static com.example.android.moviemotion.MovieUtils.ratingsList;
-import static com.example.android.moviemotion.MovieUtils.releaseDateList;
-import static com.example.android.moviemotion.MovieUtils.titleList;
 
 
 public class DetailActivity extends AppCompatActivity {
 
-    public static final String EXTRA_POSITION = "extra_position";
-    private static final int DEFAULT_POSITION = -1;
+    // String for log message
+    public static final String LOG_TAG = DetailActivity.class.getName();
+
+    /* Constant values for the names of each respective parameter */
+    private static final String MOVIE_TITLE = "movie_title";
+    private static final String MOVIE_PLOT = "movie_plot";
+    private static final String MOVIE_RATINGS= "movie_ratings";
+    private static final String MOVIE_RELEASE_DATE = "movie_release_date";
+    private static final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/w185//";
+    private static final String POSTER_PATH= "poster_path";
+
 
 
     @Override
@@ -34,42 +39,33 @@ public class DetailActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        int position = intent.getIntExtra(EXTRA_POSITION, DEFAULT_POSITION);
-        getSupportActionBar().setTitle(titleList.get(position));
+
+
+        if (getIntent().hasExtra(MOVIE_TITLE)) {
+
+            getSupportActionBar().setTitle(getIntent().getStringExtra(MOVIE_TITLE));
+
+            titleTv.setText(getIntent().getStringExtra(MOVIE_TITLE));
+            overviewTv.setText(getIntent().getStringExtra(MOVIE_PLOT));
+            ratingsTv.setText(getIntent().getStringExtra(MOVIE_RATINGS));
+            releaseDateTv.setText(getIntent().getStringExtra(MOVIE_RELEASE_DATE));
+
+
+            String posterPath = (POSTER_BASE_URL + getIntent().getStringExtra(POSTER_PATH));
+
+            Picasso.get()
+                    .load(posterPath)
+                    .into(posterIv);
+
+
+        }
 
 
         if (intent == null) {
-            //closeOnError();
+
+            Log.d(LOG_TAG, String.valueOf(R.string.data_pass_error_in_details_activity));
         }
 
-
-        if (position == DEFAULT_POSITION) {
-            // EXTRA_POSITION not found in intent
-            // closeOnError();
-            return;
-        }
-
-
-        titleTv.setText(titleList.get(position));
-        overviewTv.setText(overviewList.get(position));
-        ratingsTv.setText(ratingsList.get(position));
-        releaseDateTv.setText(releaseDateList.get(position));
-
-
-        String posterPath = ("http://image.tmdb.org/t/p/w185//" + posterLinkList.get(position));
-
-
-        populateUI();
-
-        Picasso.with(this)
-                .load(posterPath)
-                .into(posterIv);
-
-
-    }
-
-
-    private void populateUI() {
 
     }
 

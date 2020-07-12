@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true">
 
     <LinearLayout
@@ -17,7 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="350dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:paddingTop="4dp"
+            app:srcCompat="@drawable/ic_launcher_background"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,9 +30,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingRight="4dp"
-                android:text="Title:"
+                android:paddingStart="16dp"
+                android:paddingEnd="4dp"
+                android:text="@string/title"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold" />
 
@@ -38,8 +41,8 @@
                 android:id="@+id/title_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingRight="16dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold" />
 
@@ -53,9 +56,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingRight="4dp"
-                android:text="Plot:"
+                android:paddingStart="16dp"
+                android:paddingEnd="4dp"
+                android:text="@string/plot"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold" />
 
@@ -63,8 +66,8 @@
                 android:id="@+id/overview_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingRight="16dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/holo_blue_dark" />
 
         </LinearLayout>
@@ -78,9 +81,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingRight="4dp"
-                android:text="Ratings:"
+                android:paddingStart="16dp"
+                android:paddingEnd="4dp"
+                android:text="@string/ratings"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold" />
 
@@ -89,8 +92,8 @@
                 android:id="@+id/ratings_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingRight="16dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/holo_blue_dark" />
 
         </LinearLayout>
@@ -103,9 +106,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="16dp"
-                android:paddingRight="4dp"
-                android:text="Release Date:"
+                android:paddingStart="16dp"
+                android:paddingEnd="4dp"
+                android:text="@string/release_date"
                 android:textColor="@android:color/holo_blue_dark"
                 android:textStyle="bold" />
 
@@ -113,8 +116,8 @@
                 android:id="@+id/release_date_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="4dp"
-                android:paddingRight="16dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="16dp"
                 android:textColor="@android:color/holo_blue_dark" />
 
         </LinearLayout>

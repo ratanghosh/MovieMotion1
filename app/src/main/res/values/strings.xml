@@ -1,41 +1,24 @@
 <resources>
     <string name="app_name">Movie Motion</string>
 
-    <string name="no_movie">No movie found. Please make sure Title Topic in the setting menu is correct</string>
 
     <!-- Error message when there is no internet connectivity [CHAR LIMIT=NONE] -->
-    <string name="no_internet_connection">No internet connection.</string>
+    <string name="on_response_error">No Response.</string>
 
-    <string name="settings_number_of_news_label">Maximum Number of News </string>
-    <string name="settings_number_of_news_key" translatable="false">number_of_news</string>
-    <string name="settings_number_of_news_default" translatable="false">10</string>
+    <string name="data_pass_error_in_details_activity">No Movie data passed to details activity.</string>
 
 
-    <string name="settings_news_title_label">Title Topic</string>
-    <string name="settings_news_title_key" translatable="false">news_section</string>
-    <string name="settings_news_title_default" translatable="false">"US"</string>
-
-
-    <!-- Label for the temperature units preference [CHAR LIMIT=30] -->
-    <string name="pref_units_label">Temperature Units</string>
-
-    <!-- Label for metric option in temperature unit preference [CHAR LIMIT=25] -->
-    <string name="pref_units_label_metric">Metric</string>
-
-    <!-- Label for imperial option in temperature unit preference [CHAR LIMIT=25] -->
-    <string name="pref_units_label_imperial">Imperial</string>
-
-    <!-- Key name for temperature unit preference in SharedPreferences [CHAR LIMIT=NONE] -->
-    <string name="pref_units_key" translatable="false">units</string>
-
-    <!-- Value in SharedPreferences for metric temperature unit option [CHAR LIMIT=NONE] -->
-    <string name="pref_units_metric" translatable="false">metric</string>
-
-    <!-- Value in SharedPreferences for imperial temperature unit option [CHAR LIMIT=NONE] -->
-    <string name="pref_units_imperial" translatable="false">imperial</string>
     <string name="sort_by">Sort By</string>
     <string name="popular">Popular</string>
     <string name="top_rated">Top Rated</string>
+    <string name="popularMovie">Popular</string>
+    <string name="topRatedMovie">Top Rated</string>
+    <string name="title">Title:</string>
+    <string name="plot">Plot:</string>
+    <string name="ratings">Ratings:</string>
+    <string name="release_date">Release Date:</string>
+    <string name="network_error">Communication Error! Please check your Connection</string>
+    <string name="movie_details">Movie Details </string>
 
 
 </resources>

@@ -1,9 +1,8 @@
 package com.example.android.moviemotion;
 
-import java.util.List;
 
 public class Movie {
-    private String originalTitle;
+    private String title;
     private String overview;
     private String userRating;
     private String releaseDate;
@@ -18,8 +17,8 @@ public class Movie {
     }
 
     // public constructor for the movie
-    public Movie(String originalTitle, String overview, String userRating, String releaseDate, String posterPath, String movieID) {
-        this.originalTitle = originalTitle;
+    public Movie(String title, String overview, String userRating, String releaseDate, String posterPath, String movieID) {
+        this.title = title;
         this.overview = overview;
         this.userRating = userRating;
         this.releaseDate = releaseDate;
@@ -28,8 +27,10 @@ public class Movie {
 
     }
 
-    public String getOriginalTitle() {
-        return originalTitle;
+    // Getter Method
+
+    public String getTitle() {
+        return title;
     }
 
     public String getOverview() {
@@ -50,6 +51,31 @@ public class Movie {
 
     public String getMovieID() {
         return movieID;
+    }
+
+    // Setter Methods
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
+    }
+
+    public void setUserRating(String userRating) {
+        this.userRating = userRating;
+    }
+
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public void setPosterPath(String posterPath) {
+        this.posterPath = posterPath;
+    }
+
+    public void setMovieID(String movieID) {
+        this.movieID = movieID;
     }
 
 
