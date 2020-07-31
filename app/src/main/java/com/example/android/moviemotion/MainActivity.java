@@ -45,9 +45,6 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
     public final static String URL_POPULAR_MOVIE = "https://api.themoviedb.org/3/movie/popular?api_key=";
     public final static String URL_TOP_RATED_MOVIE = "https://api.themoviedb.org/3/movie/top_rated?api_key=";
     private static final String MOVIE_TITLE = "movie_title";
-    private static final String MOVIE_PLOT = "movie_plot";
-    private static final String MOVIE_RATINGS= "movie_ratings";
-    private static final String MOVIE_RELEASE_DATE = "movie_release_date";
     private static final String MOVIE_ID= "movie_id";
     private static final String POSTER_PATH= "poster_path";
 
@@ -58,10 +55,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 // Key received from jSON
     private static final String JSON_RESULTS= "results";
     private static final String JSON_TITLE= "title";
-    private static final String JSON_OVERVIEW= "overview";
+
     private static final String JSON_ID= "id";
-    private static final String JSON_RELEASE_DATE= "release_date";
-    private static final String JSON_VOTE_AVERAGE= "vote_average";
+
     private static final String JSON_POSTER_PATH= "poster_path";
 
 // Final URL on create
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
     RecyclerView recyclerView;
     List<Movie> movies;
-    //private static String JSON_URL = "http://starlord.hackerearth.com/studio";
+
     MovieAdapter movieAdapter;
 
 
@@ -114,6 +110,34 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
             extractMovieData(MOVIES_URL);
             return true;
         }
+
+        if (item.getItemId() == R.id.favorite) {
+            movies.clear();
+            //Intent intent = new Intent(this, FavoriteMovieActivity.class);
+            //startActivity(intent);
+
+            Movie movie1 = new Movie();
+            Movie movie2 = new Movie();
+
+            // set data for individual item in the movie 1 object
+            movie1.setTitle("Ad Astra");
+            movie1.setMovieID("419704");
+            movie1.setPosterPath("/xBHvZcjRiWyobQ9kxBhO6B2dtRI.jpg");
+
+            // set data for individual item in the movie  2 object
+            movie2.setTitle("Scoob!");
+            movie2.setMovieID("385103");
+            movie2.setPosterPath("/jHo2M1OiH9Re33jYtUQdfzPeUkx.jpg");
+
+            // add new movie data
+            movies.add(movie1);
+            movies.add(movie2);
+
+            setMovieToUi();
+
+
+            return true;
+        }
         return super.onOptionsItemSelected(item);
 
     }
@@ -141,10 +165,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
 
                                 // set data for individual item in the movie object
                                 movie.setTitle(currentMovie.getString(JSON_TITLE));
-                                movie.setOverview(currentMovie.getString(JSON_OVERVIEW));
                                 movie.setMovieID(currentMovie.getString(JSON_ID));
-                                movie.setReleaseDate(currentMovie.getString(JSON_RELEASE_DATE));
-                                movie.setUserRating(currentMovie.getString(JSON_VOTE_AVERAGE));
                                 movie.setPosterPath(currentMovie.getString(JSON_POSTER_PATH));
 
                                 // add new movie data
@@ -156,10 +177,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
                         }
 
 
-                        recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 4, RecyclerView.VERTICAL, false));
-                        movieAdapter = new MovieAdapter(MainActivity.this, movies);
-                        recyclerView.setAdapter(movieAdapter);
-                        movieAdapter.setOnItemClickListener(MainActivity.this);
+                       setMovieToUi();
                     } // end of public void onResponse(JSONObject response)
                 }, new Response.ErrorListener() {
             @Override
@@ -181,6 +199,15 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
     }
 
 
+    public void setMovieToUi(){
+        recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 4, RecyclerView.VERTICAL, false));
+        movieAdapter = new MovieAdapter(MainActivity.this, movies);
+        recyclerView.setAdapter(movieAdapter);
+        movieAdapter.setOnItemClickListener(MainActivity.this);
+
+    }
+
+
     @Override
     public void onItemClick(int position) {
 
@@ -188,11 +215,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.OnIt
         Movie clickedItem = movies.get(position);
 
         intent.putExtra(MOVIE_TITLE, clickedItem.getTitle());
-        intent.putExtra(MOVIE_PLOT, movies.get(position).getOverview());
-        intent.putExtra(MOVIE_RATINGS, movies.get(position).getUserRating());
-        intent.putExtra(MOVIE_RELEASE_DATE, movies.get(position).getReleaseDate());
         intent.putExtra(MOVIE_ID, movies.get(position).getMovieID());
-        intent.putExtra(POSTER_PATH, movies.get(position).getPosterPath());
+
 
         startActivity(intent);
 

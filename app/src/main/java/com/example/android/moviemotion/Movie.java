@@ -1,11 +1,14 @@
 package com.example.android.moviemotion;
 
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "movie_table")
 public class Movie {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String title;
-    private String overview;
-    private String userRating;
-    private String releaseDate;
     private String posterPath;
     private String movieID;
 
@@ -17,11 +20,8 @@ public class Movie {
     }
 
     // public constructor for the movie
-    public Movie(String title, String overview, String userRating, String releaseDate, String posterPath, String movieID) {
+    public Movie(String title, String posterPath, String movieID) {
         this.title = title;
-        this.overview = overview;
-        this.userRating = userRating;
-        this.releaseDate = releaseDate;
         this.posterPath = posterPath;
         this.movieID = movieID;
 
@@ -31,18 +31,6 @@ public class Movie {
 
     public String getTitle() {
         return title;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public String getUserRating() {
-        return userRating;
-    }
-
-    public String getReleaseDate() {
-        return releaseDate;
     }
 
     public String getPosterPath() {
@@ -56,18 +44,6 @@ public class Movie {
     // Setter Methods
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
-    public void setUserRating(String userRating) {
-        this.userRating = userRating;
-    }
-
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
     }
 
     public void setPosterPath(String posterPath) {

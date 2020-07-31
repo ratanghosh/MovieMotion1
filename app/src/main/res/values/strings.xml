@@ -13,12 +13,14 @@
     <string name="top_rated">Top Rated</string>
     <string name="popularMovie">Popular</string>
     <string name="topRatedMovie">Top Rated</string>
+    <string name="favoriteMovie">Favorite</string>
     <string name="title">Title:</string>
     <string name="plot">Plot:</string>
     <string name="ratings">Ratings:</string>
     <string name="release_date">Release Date:</string>
     <string name="network_error">Communication Error! Please check your Connection</string>
     <string name="movie_details">Movie Details </string>
+    <string name="reviews">Reviews</string>
 
 
 </resources>
