@@ -1,13 +1,11 @@
 package com.example.android.moviemotion;
 
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
 
-@Entity(tableName = "movie_table")
+
 public class Movie {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+
+
     private String title;
     private String posterPath;
     private String movieID;

@@ -1,6 +1,7 @@
 package com.example.android.moviemotion;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -20,6 +21,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.android.moviemotion.favoriteMovie.FavoriteMovieDatabase;
+import com.example.android.moviemotion.favoriteMovie.FavoriteMovieExecutor;
+import com.example.android.moviemotion.favoriteMovie.FavoriteMovieModel;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -27,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class DetailActivity extends AppCompatActivity {
@@ -53,6 +58,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private static String movieId;
     private static String movieName;
+    private static String posterPath;
 
 
     private RequestQueue mQueue;
@@ -64,10 +70,17 @@ public class DetailActivity extends AppCompatActivity {
     private static TextView reviewContentTextView;
 
 
+    private FavoriteMovieDatabase mDb;
+
+    private boolean movieIsFavorite = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mDb = FavoriteMovieDatabase.getInstance(getApplicationContext());
 
 
         mQueue = Volley.newRequestQueue(this);
@@ -82,9 +95,21 @@ public class DetailActivity extends AppCompatActivity {
 
             movieId = getIntent().getStringExtra(MOVIE_ID);
             movieName = getIntent().getStringExtra(MOVIE_TITLE);
+            posterPath = getIntent().getStringExtra(POSTER_PATH);
 
 
         }
+
+
+        // Set poster imageView
+        ImageView posterIv = findViewById(R.id.poster_iv);
+        Picasso.get()
+                .load(POSTER_BASE_URL +posterPath)
+                .into(posterIv);
+
+        // Set Title
+        TextView titleTv = findViewById(R.id.title_tv);
+        titleTv.setText(movieName);
 
         // extract data for movie details
         movieDetails(movieId);
@@ -137,8 +162,8 @@ public class DetailActivity extends AppCompatActivity {
         }
 
 
-        // dummy for show and hide favorite
-        makeFavorite();
+
+        makeFavorite(movieId,movieName,posterPath);
 
 
     }
@@ -248,17 +273,62 @@ public class DetailActivity extends AppCompatActivity {
 
     }
 
-    public void makeFavorite() {
+    public void makeFavorite(final String mMovieId, final String mMovieName, final String mPosterPath) {
         // Image for favorite
         final ImageView favoriteBorderIV = findViewById(R.id.favorite_border_iv);
         final ImageView favoriteIV = findViewById(R.id.favorite_iv);
+
+        favoriteBorderIV.setVisibility(View.VISIBLE);
+        favoriteIV.setVisibility(View.GONE);
+
+        // check if the movie ID is already within the favorite movie list
+
+        FavoriteMovieExecutor.getInstance().diskIO().execute(new Runnable() {
+            @Override
+            public void run() {
+
+                List<Integer> favoriteMoviesId = mDb.favoriteMovieDao().getAllIds();
+
+                for(int i = 0; i < favoriteMoviesId.size(); i++){
+                    int idCheck = favoriteMoviesId.get(i);
+                    if( idCheck == Integer.parseInt(mMovieId)){
+                        favoriteBorderIV.setVisibility(View.GONE);
+                        favoriteIV.setVisibility(View.VISIBLE);
+                    }
+                }
+
+
+
+            }
+        });
+
+
 
         favoriteBorderIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 favoriteBorderIV.setVisibility(View.GONE);
                 favoriteIV.setVisibility(View.VISIBLE);
-                Toast.makeText(getApplicationContext(), movieName + movieId + " now on your favorite list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), movieName  + " now on your favorite list", Toast.LENGTH_SHORT).show();
+
+                // save the movieID and movieName in the room database
+
+                int movieId = Integer.parseInt(mMovieId);
+
+                String movieName = mMovieName;
+                String posterPath = mPosterPath;
+
+                final FavoriteMovieModel favoriteMovieModel = new FavoriteMovieModel(movieId,movieName,posterPath);
+
+                FavoriteMovieExecutor.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        mDb.favoriteMovieDao().insertFavoriteMovie(favoriteMovieModel);
+
+                    }
+                });
+
+
 
             }
 
@@ -269,7 +339,25 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 favoriteBorderIV.setVisibility(View.VISIBLE);
                 favoriteIV.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), movieName + "Removed from favorite list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),  mMovieName + "Removed from favorite list", Toast.LENGTH_SHORT).show();
+
+
+
+
+                FavoriteMovieExecutor.getInstance().diskIO().execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        int movieId = Integer.parseInt(mMovieId);
+
+                        mDb.favoriteMovieDao().deleteByMovieId(movieId);
+
+
+                    }
+                });
+
+
+
+
 
             }
 
@@ -300,7 +388,8 @@ public class DetailActivity extends AppCompatActivity {
 
                             // Set Title
                             TextView titleTv = findViewById(R.id.title_tv);
-                            titleTv.setText(response.getString(JSON_TITLE));
+                            titleTv.setText(movieName);
+                            //titleTv.setText(response.getString(JSON_TITLE));
 
                             //set plot
                             TextView overviewTv = findViewById(R.id.overview_tv);
@@ -332,6 +421,8 @@ public class DetailActivity extends AppCompatActivity {
         mQueue.add(request);
 
     }
+
+
 
 
 }

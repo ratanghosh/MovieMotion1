@@ -39,6 +39,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     }
 
+    public void setTasks(List<Movie> moviesList) {
+        movies = moviesList;
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
