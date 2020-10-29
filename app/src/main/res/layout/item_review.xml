@@ -5,21 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+
     <TextView
         android:id="@+id/author_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="4dp"
+        android:paddingStart="@dimen/padding_16dp"
+        android:paddingEnd="@dimen/padding_4dp"
         android:background="@android:color/holo_blue_bright"
-        android:text="author"/>
+        android:text="@string/author" />
 
     <TextView
         android:id="@+id/review_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingStart="16dp"
-        android:paddingEnd="4dp"
-        android:text="Review"/>
+        android:paddingStart="@dimen/padding_16dp"
+        android:paddingEnd="@dimen/padding_4dp"
+        android:text="@string/review" />
 
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.example.android.moviemotion;
+package com.example.android.moviemotion.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,18 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+import com.example.android.moviemotion.Constant;
+import com.example.android.moviemotion.Movie;
+import com.example.android.moviemotion.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    private static final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/w185//";
+
 
 
     private LayoutInflater inflater;
@@ -56,7 +57,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         // bind the data to create thumbnails in the main page
-        String posterUrl = (POSTER_BASE_URL + movies.get(position).getPosterPath());
+        String posterUrl = (Constant.POSTER_BASE_URL + movies.get(position).getPosterPath());
         Picasso.get().load(posterUrl).into(holder.movieCoverImage);
 
     }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ImageView_height">250dp</dimen>
+    <dimen name="ImageView_padding">8dp</dimen>
+    <dimen name="heart_width">50dp</dimen>
+    <dimen name="heart_padding_top">40dp</dimen>
+    <dimen name="heart_padding_right">8dp</dimen>
+    <dimen name="heart_padding_left">20dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_32dp">32dp</dimen>
+    <dimen name="poster_width">95dp</dimen>
+    <dimen name="poster_height">185dp</dimen>
+    <dimen name="poster_radius">8dp</dimen>
+</resources>

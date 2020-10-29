@@ -1,6 +1,6 @@
 package com.example.android.moviemotion.favoriteMovie;
 
-import androidx.room.ColumnInfo;
+
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -13,19 +13,14 @@ public class FavoriteMovieModel {
     private int id;
 
 
-
     private int movieId;
 
-
     private String movieName;
-
 
     private String posterPath;
 
 
-
-
-@Ignore
+    @Ignore
     public FavoriteMovieModel(int movieId, String movieName, String posterPath) {
         this.movieId = movieId;
         this.movieName = movieName;

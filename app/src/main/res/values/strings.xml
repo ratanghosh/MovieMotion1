@@ -9,8 +9,8 @@
 
 
     <string name="sort_by">Sort By</string>
-    <string name="popular">Popular</string>
-    <string name="top_rated">Top Rated</string>
+    <string name="popular_title">Popular</string>
+    <string name="top_rated_title">Top Rated</string>
     <string name="popularMovie">Popular</string>
     <string name="topRatedMovie">Top Rated</string>
     <string name="favoriteMovie">Favorite</string>
@@ -21,6 +21,21 @@
     <string name="network_error">Communication Error! Please check your Connection</string>
     <string name="movie_details">Movie Details </string>
     <string name="reviews">Reviews</string>
+    <string name="results">results</string>
+    <string name="no_application_can_handle_this_request">No application can handle this request.</string>
+    <string name="added_on_favorite_list">now on your favorite list</string>
+    <string name="removed_from_favorite_list">Removed from favorite list</string>
+    <string name="key">key</string>
+    <string name="review_author">author</string>
+    <string name="review_content">content</string>
+    <string name="top_rated">top_rated</string>
+    <string name="favorite">favorite</string>
+    <string name="popular">popular</string>
+    <string name="movieType">movieType</string>
+    <string name="trailer_2">Trailer-2</string>
+    <string name="trailer_1">Trailer-1</string>
+    <string name="author">author</string>
+    <string name="review">Review</string>
 
 
 </resources>

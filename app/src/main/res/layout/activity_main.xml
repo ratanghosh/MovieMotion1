@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView
 
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/moviesList">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:id="@+id/moviesListRecyclerView"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_8dp">
 
 
+    </androidx.recyclerview.widget.RecyclerView>
 
-</androidx.recyclerview.widget.RecyclerView>
+</layout>
+
